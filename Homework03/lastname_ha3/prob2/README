@@ -1,0 +1,42 @@
+CSCE 451/851 Homework 3 - Problem 2
+Sleeping Stylist with a Custom Monitor
+
+Team members:
+Replace this line with the submitter name(s).
+
+Build:
+make
+
+Run:
+./sleepingStylistMon
+
+What to observe:
+The program creates 120 customer threads and one stylist thread. The monitor is
+implemented in monitor.c and uses POSIX semaphores only. It does not use
+pthread condition variables.
+
+The monitor uses:
+entry_queue - the monitor entry semaphore
+urgent_queue - the signal-and-wait queue used by signaling threads
+CV stylistAvailable - customers wait here until the stylist is ready
+CV customerAvailable - the stylist waits here when the salon is empty
+
+The output lines beginning with "signal(...)" and "wait(...)" demonstrate the
+signal-and-wait discipline. When signal wakes a blocked thread, the signaler
+yields on urgent_queue. The awakened thread resumes at the statement after its
+wait call and runs inside the monitor before the signaler continues.
+
+The chair line uses the required form:
+| 1 | 1 | 1 | 0 | 0 | 0 | 0 | => 3
+
+The output also reports:
+Given haircuts = number of completed haircuts
+Salon full = counter incremented by 7 each time the seventh chair is filled
+Salon empty = number of times the stylist goes to sleep
+CV counts = number of threads blocked on each condition variable
+
+Time spent:
+Problem 2: about 8 hours.
+
+Challenge level:
+Problem 2: 5 out of 5.

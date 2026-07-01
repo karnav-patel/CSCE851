@@ -1,0 +1,32 @@
+CSCE 451/851 Homework 3 - Problem 1
+Sleeping Stylist with Semaphores
+
+Team members:
+Replace this line with the submitter name(s).
+
+Build:
+make
+
+Run:
+./sleepingStylistSem
+
+What to observe:
+The program creates 120 customer threads and one stylist thread. The stylist
+starts first, so the output shows the stylist going to sleep when the salon is
+empty. Customers then arrive, sit in the seven waiting chairs, leave to go
+shopping when the salon is full, and retry until every customer receives a
+haircut.
+
+The chair line uses the required form:
+| 1 | 1 | 1 | 0 | 0 | 0 | 0 | => 3
+
+The output also reports:
+Given haircuts = number of completed haircuts
+Salon full = counter incremented by 7 each time the seventh chair is filled
+Salon empty = number of times the stylist goes to sleep
+
+Time spent:
+Problem 1: about 5 hours.
+
+Challenge level:
+Problem 1: 3 out of 5.
